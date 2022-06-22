@@ -1,4 +1,4 @@
-# @garoon/plugin-uploader
+# garoon-plugin-uploader
 Garoon plugin uploader using [puppeteer](https://github.com/puppeteer/puppeteer).
 
 Note: In environments where only SAML authentication is enabled, only Users & System Administrators can use this uploader to upload plugins. ([References](https://jp.cybozu.help/general/en/id/02036.html#list_saml_saml_restriction_20))
