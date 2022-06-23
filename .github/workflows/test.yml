@@ -16,5 +16,6 @@ jobs:
           node-version: '14'
       - run: |
           yarn install
+          yarn run build
           node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip
           node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip --plugin-id ${{ secrets.GAROON_PLUGIN_ID }}
