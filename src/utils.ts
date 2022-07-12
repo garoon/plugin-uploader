@@ -1,8 +1,8 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 import chalk from "chalk";
 
-const TIMEOUT_MILLISECOUNDS = 10000;
-const UPLOAD_WAIT_MILLISECOUNDS = 5000;
+const TIMEOUT_MILLISECONDS = 10000;
+const UPLOAD_WAIT_MILLISECONDS = 5000;
 
 export type BasicAuth = {
   username: string;
@@ -14,6 +14,18 @@ const launchBrowser = async (proxy: string | undefined): Promise<Browser> => {
   return puppeteer.launch({ args });
 };
 
+
+const checkSubmitStatus = async (page: Page) => {
+  try {
+    await page.waitForSelector(".admin_mainarea_mm_grn", {
+      timeout: TIMEOUT_MILLISECONDS,
+    });
+    console.log(chalk.green("Success submitting file!"));
+  } catch (e) {
+    throw new Error("Error: Can not submit zip file!");
+  }
+}
+
 const sleep = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -22,7 +34,7 @@ const login = async (
   browser: Browser,
   username: string,
   password: string,
-  basicAuth: BasicAuth | null
+  basicAuth: BasicAuth | null,
 ): Promise<Page> => {
   const loginUrl: string = `${baseUrl}/login/?saml=off`;
   const page: Page = await browser.newPage();
@@ -44,7 +56,7 @@ const login = async (
     await page.type(".form-password-slash > input.form-text", password);
     await page.click(".login-button");
     await page.waitForNavigation({
-      timeout: TIMEOUT_MILLISECOUNDS,
+      timeout: TIMEOUT_MILLISECONDS,
       waitUntil: "domcontentloaded",
     });
     console.log(chalk.green("Success Login!"));
@@ -66,7 +78,7 @@ const update = async (
 
   try {
     await page.waitForSelector(".js_plugin_update", {
-      timeout: TIMEOUT_MILLISECOUNDS,
+      timeout: TIMEOUT_MILLISECONDS,
     });
   } catch (e) {
     throw new Error("Error: Can not view plugin detail page!");
@@ -78,18 +90,20 @@ const update = async (
     throw new Error('Error: input[type="file"] is not found');
   }
 
+  console.log("Start uploading file...........");
+
   try {
     await file.uploadFile(pluginPath);
   } catch (e) {
     throw new Error("Error: Can not upload zip file!!");
   }
 
-  console.log("Upload File.");
+  console.log("End uploading file.");
   console.log("Waiting for reading file...........");
 
   // ATTENTION: Garoon can't read the file immediately.
   // So, it needs to wait for five seconds.
-  await sleep(UPLOAD_WAIT_MILLISECOUNDS);
+  await sleep(UPLOAD_WAIT_MILLISECONDS);
   await page.evaluate(() => {
     const submitButton = document.querySelector<HTMLAnchorElement>(
       ".js_dialog_footer > .button1_main_grn > a[role=button]"
@@ -101,14 +115,7 @@ const update = async (
     }
   });
 
-  try {
-    await page.waitForSelector(".plugin_detail_name_grn", {
-      timeout: TIMEOUT_MILLISECOUNDS,
-    });
-    console.log(chalk.green("Success submitting file!"));
-  } catch (e) {
-    throw new Error("Error: Can not submit zip file!");
-  }
+  await checkSubmitStatus(page);
 };
 
 const add = async (
@@ -121,7 +128,7 @@ const add = async (
   await page.goto(pluginSettingUrl);
   try {
     await page.waitForSelector(".js_file_upload_wrapper", {
-      timeout: TIMEOUT_MILLISECOUNDS,
+      timeout: TIMEOUT_MILLISECONDS,
     });
   } catch (e) {
     throw new Error("Error: Can not view plugin setting page!");
@@ -133,18 +140,20 @@ const add = async (
     throw new Error('Error: input[type="file"] is not found');
   }
 
+  console.log("Start uploading file...........");
+  
   try {
     await file.uploadFile(pluginPath);
   } catch (e) {
     throw new Error("Error: Can not upload zip file!!");
   }
 
-  console.log("Upload File.");
+  console.log("End uploading file.");
   console.log("Waiting for reading file...........");
 
   // ATTENTION: Garoon can't read the file immediately.
   // So, it needs to wait for five seconds.
-  await sleep(UPLOAD_WAIT_MILLISECOUNDS);
+  await sleep(UPLOAD_WAIT_MILLISECONDS);
   await page.evaluate(() => {
     const submitButton = document.querySelector<HTMLAnchorElement>(
       ".js_dialog_footer > .button1_main_grn > a[role=button]"
@@ -155,14 +164,7 @@ const add = async (
       throw new Error("Error: Can not find upload button!");
     }
   });
-  try {
-    await page.waitForSelector(".plugin_list_area_grn", {
-      timeout: TIMEOUT_MILLISECOUNDS,
-    });
-    console.log(chalk.green("success submitting file!"));
-  } catch (e) {
-    throw new Error("Error: Can not submit zip file!");
-  }
+  await checkSubmitStatus(page);
 };
 
 export const run = async (
