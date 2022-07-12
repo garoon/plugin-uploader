@@ -16,7 +16,10 @@ $ npm install -g @garoon/plugin-uploader
 ```
 
 ## Usage
-In the project of creating the plugin, type the following command.
+
+```
+$ cd your_project
+```
 
 ### Apply the plugin to Garoon for the first time
 
