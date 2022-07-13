@@ -14,7 +14,6 @@ const launchBrowser = async (proxy: string | undefined): Promise<Browser> => {
   return puppeteer.launch({ args });
 };
 
-
 const checkSubmitStatus = async (page: Page) => {
   try {
     await page.waitForSelector(".admin_mainarea_mm_grn", {
@@ -24,7 +23,7 @@ const checkSubmitStatus = async (page: Page) => {
   } catch (e) {
     throw new Error("Error: Can not submit zip file!");
   }
-}
+};
 
 const sleep = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,7 +33,7 @@ const login = async (
   browser: Browser,
   username: string,
   password: string,
-  basicAuth: BasicAuth | null,
+  basicAuth: BasicAuth | null
 ): Promise<Page> => {
   const loginUrl: string = `${baseUrl}/login/?saml=off`;
   const page: Page = await browser.newPage();
@@ -43,14 +42,9 @@ const login = async (
     await page.authenticate(basicAuth);
   }
 
-  try {
-    await page.goto(loginUrl);
-  } catch (e) {
-    throw new Error("Error: Target URL is invalid.");
-  }
-
+  console.log(`Open ${loginUrl}`);
+  await page.goto(loginUrl);
   console.log("Trying to login.....");
-
   try {
     await page.type(".form-username-slash > input.form-text", username);
     await page.type(".form-password-slash > input.form-text", password);
@@ -69,7 +63,7 @@ const login = async (
 const update = async (
   page: Page,
   baseUrl: string,
-  pluginId: number,
+  pluginId: string,
   pluginPath: string
 ): Promise<void> => {
   const pluginUrl = `${baseUrl}/g/system/plugin/view.csp?id=${pluginId}`;
@@ -141,7 +135,7 @@ const add = async (
   }
 
   console.log("Start uploading file...........");
-  
+
   try {
     await file.uploadFile(pluginPath);
   } catch (e) {
@@ -172,14 +166,13 @@ export const run = async (
   username: string,
   password: string,
   pluginPath: string,
-  pluginId: number | undefined,
+  pluginId: string | undefined,
   basicAuth: BasicAuth | null,
   proxy: string | undefined
 ): Promise<void> => {
   const browser = await launchBrowser(proxy);
-  let page: Page;
   try {
-    page = await login(baseUrl, browser, username, password, basicAuth);
+    const page = await login(baseUrl, browser, username, password, basicAuth);
     if (pluginId) {
       await update(page, baseUrl, pluginId, pluginPath);
     } else {

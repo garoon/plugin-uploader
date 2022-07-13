@@ -54,7 +54,7 @@ Options:
   --username             Garoon username                     [string] [required]
   --password             Garoon password                     [string] [required]
   --plugin-path          existing plugin's zip path          [string] [required]
-  --plugin-id            plugin's id                                    [number]
+  --plugin-id            plugin's id                                    [string]
   --basic-auth-username  username for Basic Authentication               [string]
   --basic-auth-password  password for Basic Authentication               [string]
   --proxy                IP or hostname for proxy server                 [string]
