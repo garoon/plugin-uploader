@@ -38,7 +38,7 @@ const argv = yargs(process.argv.slice(2))
     },
     "basic-auth-password": {
       describe: "password for Basic Authentication",
-      default: process.env.GAROON_BASIC_PASSWORD,
+      default: process.env.GAROON_BASIC_AUTH_PASSWORD,
       type: "string",
     },
     proxy: {
