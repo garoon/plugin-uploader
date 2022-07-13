@@ -4,18 +4,24 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '14'
+          cache: 'yarn'
       - run: |
-          yarn install
+          yarn install --immutable
+          yarn run lint
           yarn run build
           node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip
           node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip --plugin-id ${{ secrets.GAROON_PLUGIN_ID }}
