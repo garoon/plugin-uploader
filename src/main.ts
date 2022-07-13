@@ -33,7 +33,7 @@ const argv = yargs(process.argv.slice(2))
     },
     "basic-auth-username": {
       describe: "username for Basic Authentication",
-      default: process.env.GAROON_BASIC_USERNAME,
+      default: process.env.GAROON_BASIC_AUTH_USERNAME,
       type: "string",
     },
     "basic-auth-password": {
