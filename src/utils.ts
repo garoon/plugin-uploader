@@ -182,5 +182,6 @@ export const run = async (
   } catch (e) {
     console.error(e);
     await browser.close();
+    process.exit(1);
   }
 };
