@@ -21,7 +21,8 @@ const checkSubmitStatus = async (page: Page) => {
     });
     console.log(chalk.green("Success submitting file!"));
   } catch (e) {
-    throw new Error("Error: Can not submit zip file!");
+    console.error(e);
+    throw new Error("Can not submit zip file!");
   }
 };
 
@@ -56,7 +57,8 @@ const login = async (
     console.log(chalk.green("Success Login!"));
     return page;
   } catch (e) {
-    throw new Error("Error: Can not Login!");
+    console.error(e);
+    throw new Error("Can not Login!");
   }
 };
 
@@ -75,13 +77,14 @@ const update = async (
       timeout: TIMEOUT_MILLISECONDS,
     });
   } catch (e) {
-    throw new Error("Error: Can not view plugin detail page!");
+    console.error(e);
+    throw new Error("Can not view plugin detail page!");
   }
 
   await page.click(".js_plugin_update");
   const file = await page.$('.file_input_div > input[type="file"]');
   if (file === null) {
-    throw new Error('Error: input[type="file"] is not found');
+    throw new Error('input[type="file"] is not found');
   }
 
   console.log("Start uploading file...........");
@@ -89,7 +92,8 @@ const update = async (
   try {
     await file.uploadFile(pluginPath);
   } catch (e) {
-    throw new Error("Error: Can not upload zip file!!");
+    console.error(e);
+    throw new Error("Can not upload zip file!!");
   }
 
   console.log("End uploading file.");
@@ -105,7 +109,7 @@ const update = async (
     if (submitButton) {
       submitButton.click();
     } else {
-      throw new Error("Error: Can not find upload button!");
+      throw new Error("Can not find upload button!");
     }
   });
 
@@ -125,13 +129,14 @@ const add = async (
       timeout: TIMEOUT_MILLISECONDS,
     });
   } catch (e) {
-    throw new Error("Error: Can not view plugin setting page!");
+    console.error(e);
+    throw new Error("Can not view plugin setting page!");
   }
 
   await page.click("#main_menu_part > .menu_item > .button_main_grn");
   const file = await page.$('.file_input_div > input[type="file"]');
   if (file === null) {
-    throw new Error('Error: input[type="file"] is not found');
+    throw new Error('input[type="file"] is not found');
   }
 
   console.log("Start uploading file...........");
@@ -139,7 +144,8 @@ const add = async (
   try {
     await file.uploadFile(pluginPath);
   } catch (e) {
-    throw new Error("Error: Can not upload zip file!!");
+    console.error(e);
+    throw new Error("Can not upload zip file!!");
   }
 
   console.log("End uploading file.");
@@ -155,7 +161,7 @@ const add = async (
     if (submitButton) {
       submitButton.click();
     } else {
-      throw new Error("Error: Can not find upload button!");
+      throw new Error("Can not find upload button!");
     }
   });
   await checkSubmitStatus(page);
