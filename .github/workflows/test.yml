@@ -20,7 +20,7 @@ jobs:
           node-version: '14'
           cache: 'yarn'
       - run: |
-          yarn install --immutable
+          yarn install --frozen-lockfile
           yarn run lint
           yarn run build
           node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip
