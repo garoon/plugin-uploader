@@ -1,0 +1,24 @@
+name: yamory
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Node.js ubuntu-latest 14
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+        cache: 'yarn'
+    - name: run Yamory
+      run: |
+        yarn install --frozen-lockfile
+        bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)"
+      env:
+        PROJECT_GROUP_KEY: ${{ secrets.PROJECT_GROUP_KEY }}
+        YAMORY_API_KEY: ${{ secrets.YAMORY_API_KEY }}
