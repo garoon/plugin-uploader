@@ -1,0 +1,52 @@
+---
+- - :inherit_from
+  - "./license_finder/doc/use-with-redistribution-decisions.yml"
+- - :permit
+  - MIT
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:10:57.024213462 Z
+- - :permit
+  - ISC
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:18:12.569882552 Z
+- - :permit
+  - Apache 2.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:19:14.780260595 Z
+- - :permit
+  - Simplified BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:20:13.421253553 Z
+- - :permit
+  - NewBsd
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:20:53.255778585 Z
+- - :permit
+  - Mozilla Public License 2.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:25:09.317600967 Z
+- - :permit
+  - CC0-1.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2022-08-15 06:26:06.729589174 Z
+- - :approve
+  - argparse
+  - :who: 
+    :why: Because not redistribute this package.
+    :versions:
+    - 2.0.1
+    :when: 2022-08-15 06:33:41.386203593 Z
