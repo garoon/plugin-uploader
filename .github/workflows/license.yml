@@ -8,7 +8,7 @@ on:
 
 jobs:
   check_dependency_license:
-    name: License Finder
+    name: Check Dependency License
     runs-on: ubuntu-latest
     steps:
       - name: Set up License Finder
@@ -37,7 +37,7 @@ jobs:
           license_finder --decisions-file=license_finder/doc/dependency_decisions.yml
 
   check_devdependency_license:
-      name: License Finder
+      name: Check devDependency License
       runs-on: ubuntu-latest
       steps:
         - name: Set up License Finder
