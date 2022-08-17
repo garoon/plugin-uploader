@@ -37,7 +37,7 @@ jobs:
           license_finder --decisions-file=license_finder/doc/dependency_decisions.yml
 
   check_devdependency_license:
-      name: Check devDependency License
+      name: Check DevDependency License
       runs-on: ubuntu-latest
       steps:
         - name: Set up License Finder
