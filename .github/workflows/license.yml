@@ -9,7 +9,7 @@ on:
 jobs:
   license-finder:
     name: License Finder
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Set up License Finder
         run: sudo gem install license_finder
