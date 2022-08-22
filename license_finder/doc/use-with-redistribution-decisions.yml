@@ -1,0 +1,67 @@
+---
+- - :restrict
+  - GPL-2.0-only
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :restrict
+  - GPL-3.0-only
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :restrict
+  - AGPL-3.0-only
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :restrict
+  - EUPL-1.1
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :restrict
+  - LGPL-2.0-only
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :restrict
+  - LGPL-2.1-only
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :restrict
+  - LGPL-3.0-only
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :permit
+  - 0BSD
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2014-02-04 07:41:00.000000000 Z
+- - :permit
+  - WTFPL
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2015-07-24 04:29:00.000000000 Z
+- - :restrict
+  - SSPL-1.0
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2019-02-01 04:21:00.000000000 Z
+- - :permit
+  - Unlicense
+  - :who: OSPO
+    :why:
+    :versions: []
+    :when: 2020-10-08 11:20:00.000000000 Z
