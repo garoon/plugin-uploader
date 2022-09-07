@@ -36,7 +36,7 @@ const login = async (
   password: string,
   basicAuth: BasicAuth | null
 ): Promise<Page> => {
-  const loginUrl: string = `${baseUrl}/login/?saml=off`;
+  const loginUrl: string = `${baseUrl}/login?saml=off`;
   const page: Page = await browser.newPage();
 
   if (basicAuth) {
