@@ -1,6 +1,6 @@
 {
   "name": "@garoon/plugin-uploader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/main.js",
   "description": "plugin uploader for Garoon.",
   "engines": {
