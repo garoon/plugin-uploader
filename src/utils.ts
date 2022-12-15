@@ -1,4 +1,4 @@
-import puppeteer, { Browser, Page } from "puppeteer";
+import puppeteer, { Browser, ElementHandle, Page } from "puppeteer";
 import chalk from "chalk";
 
 const TIMEOUT_MILLISECONDS = 10000;
@@ -84,7 +84,7 @@ const update = async (
   await page.click(".js_plugin_update");
   const file = (await page.$(
     '.file_input_div > input[type="file"]'
-  )) as puppeteer.ElementHandle<HTMLInputElement> | null;
+  )) as ElementHandle<HTMLInputElement> | null;
   if (file === null) {
     throw new Error('input[type="file"] is not found');
   }
@@ -138,7 +138,7 @@ const add = async (
   await page.click("#main_menu_part > .menu_item > .button_main_grn");
   const file = (await page.$(
     '.file_input_div > input[type="file"]'
-  )) as puppeteer.ElementHandle<HTMLInputElement> | null;
+  )) as ElementHandle<HTMLInputElement> | null;
   if (file === null) {
     throw new Error('input[type="file"] is not found');
   }
