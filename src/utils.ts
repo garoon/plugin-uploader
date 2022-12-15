@@ -172,9 +172,9 @@ const add = async (
 };
 
 export const run = async (
-  baseUrl: string,
-  username: string,
-  password: string,
+  baseUrl: string | undefined,
+  username: string | undefined,
+  password: string | undefined,
   pluginPath: string,
   pluginId: string | undefined,
   basicAuth: BasicAuth | null,
@@ -182,6 +182,15 @@ export const run = async (
 ): Promise<void> => {
   const browser = await launchBrowser(proxy);
   try {
+    if (!baseUrl) {
+      throw new Error("no base URL");
+    }
+    if (!username) {
+      throw new Error("no user name");
+    }
+    if (!password) {
+      throw new Error("no password");
+    }
     const page = await login(baseUrl, browser, username, password, basicAuth);
     if (pluginId) {
       await update(page, baseUrl, pluginId, pluginPath);

@@ -67,12 +67,10 @@ const basicAuth: BasicAuth | null =
       }
     : null;
 
-// yargs pass type definition including undifined and when default option is undifined, yargs catchs error.
-// therefore, use as assertion in run function
 run(
-  argv["base-url"] as string,
-  argv.username as string,
-  argv.password as string,
+  argv["base-url"],
+  argv.username,
+  argv.password,
   argv["plugin-path"],
   argv["plugin-id"],
   basicAuth,
