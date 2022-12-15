@@ -183,13 +183,13 @@ export const run = async (
   const browser = await launchBrowser(proxy);
   try {
     if (!baseUrl) {
-      throw new Error("no base URL");
+      throw new Error("Required arguments is undifined: base-url");
     }
     if (!username) {
-      throw new Error("no user name");
+      throw new Error("Required arguments is undifined: username");
     }
     if (!password) {
-      throw new Error("no password");
+      throw new Error("Required arguments is undifined: password");
     }
     const page = await login(baseUrl, browser, username, password, basicAuth);
     if (pluginId) {
