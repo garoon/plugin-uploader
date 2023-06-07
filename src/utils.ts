@@ -11,7 +11,7 @@ export type BasicAuth = {
 
 const launchBrowser = async (proxy: string | undefined): Promise<Browser> => {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
-  return puppeteer.launch({ args, headless: 'new'});
+  return puppeteer.launch({ args, headless: "new" });
 };
 
 const checkSubmitStatus = async (page: Page) => {
