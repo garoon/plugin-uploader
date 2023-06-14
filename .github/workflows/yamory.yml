@@ -5,8 +5,7 @@ on:
     branches:
       - main
 jobs:
-  build:
-    name: Node.js ubuntu-latest 14
+  check_Vulnerability:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
