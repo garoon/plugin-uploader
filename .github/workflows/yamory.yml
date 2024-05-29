@@ -12,12 +12,26 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'yarn'
+    # - name: run Yamory
+    #   run: |
+    #     yarn install --frozen-lockfile
+    #     bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)"
+    #   env:
+    - name: download and validate Yamory script
+      working-directory: /tmp
+      run: |
+        curl -sSf -L -o ./yamory-pnpm.sh https://localscanner.yamory.io/script/pnpm
+        curl -sSf -L -o ./yamory-pnpm-sha512sum.txt \
+          https://cli.yamory.io/yamory-app-library-scan-scripts/yamory-pnpm-sha512sum.txt
+        sha512sum --check yamory-pnpm-sha512sum.txt
+        chmod +x ./yamory-pnpm.sh
     - name: run Yamory
       run: |
-        yarn install --frozen-lockfile
-        bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)"
+        /tmp/yamory-pnpm.sh --manifest {}/package.json        
       env:
+        CI: true
         PROJECT_GROUP_KEY: ${{ secrets.PROJECT_GROUP_KEY }}
         YAMORY_API_KEY: ${{ secrets.YAMORY_API_KEY }}
+        
