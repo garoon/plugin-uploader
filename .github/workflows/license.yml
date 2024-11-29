@@ -11,9 +11,6 @@ jobs:
     name: Check Dependency License
     runs-on: ubuntu-latest
     steps:
-      - name: Set up License Finder
-        run: sudo gem install license_finder
-      
       - name: Check out repository
         uses: actions/checkout@v4
       
@@ -32,17 +29,15 @@ jobs:
       - name: Install Node modules
         run: yarn install --frozen-lockfile
       
+      - name: Setup License Manager
+        run: npm install @cybozu/license-manager --no-save
       - name: Check licenses
-        run: |
-          license_finder --decisions-file=license_finder/doc/dependency_decisions.yml
+        run: npx license-manager analyze -c license_manager/license-manager-prod.config.js
 
   check_devdependency_license:
       name: Check DevDependency License
       runs-on: ubuntu-latest
-      steps:
-        - name: Set up License Finder
-          run: sudo gem install license_finder
-        
+      steps:        
         - name: Check out repository
           uses: actions/checkout@v4
         
@@ -61,6 +56,7 @@ jobs:
         - name: Install Node modules
           run: yarn install --frozen-lockfile
         
+        - name: Setup License Manager
+          run: npm install @cybozu/license-manager --no-save
         - name: Check licenses
-          run: |
-            license_finder --decisions-file=license_finder/doc/devdependency_decisions.yml
+          run: npx license-manager analyze -c license_manager/license-manager-dev.config.js
