@@ -28,7 +28,7 @@
   "bugs": "https://github.com/garoon/plugin-uploader/issues",
   "license": "MIT",
   "dependencies": {
-    "chalk": "5.4.1",
+    "chalk": "5.5.0",
     "puppeteer": "^24.9.0",
     "yargs": "^18.0.0"
   },
