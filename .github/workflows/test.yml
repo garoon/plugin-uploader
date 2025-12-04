@@ -33,12 +33,14 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+      - name: Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Install Chrome for Puppeteer
         run: |
           pnpm exec puppeteer browsers install chrome
       - name: run test
         run: |
-          pnpm install --frozen-lockfile
           pnpm run lint
           pnpm run build
           node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip
