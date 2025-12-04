@@ -13,50 +13,52 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      
-      - uses: actions/cache@v4
-        id: yarn-cache
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          version: 10.18.3
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Cache Dependencies
+        uses: actions/cache@v4
+        id: node_modules_cache_id
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
-      
-      - name: Install Node modules
-        run: yarn install --frozen-lockfile
-      
-      - name: Setup License Manager
-        run: npm install @cybozu/license-manager --no-save
+            ${{ runner.os }}-pnpm-
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Check licenses
-        run: npx license-manager analyze -c license_manager/license-manager-prod.config.js
+        run: pnpm dlx @cybozu/license-manager analyze -c license_manager/license-manager-prod.config.js
 
   check_devdependency_license:
       name: Check DevDependency License
       runs-on: ubuntu-latest
-      steps:        
+      steps:
         - name: Check out repository
           uses: actions/checkout@v4
-        
-        - name: Get yarn cache directory path
-          id: yarn-cache-dir-path
-          run: echo "::set-output name=dir::$(yarn cache dir)"
-
-        - uses: actions/cache@v4
-          id: yarn-cache
+        - name: Install pnpm
+          uses: pnpm/action-setup@v4
           with:
-            path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            version: 10.18.3
+        - name: Install node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20'
+            cache: 'pnpm'
+        - name: Cache Dependencies
+          uses: actions/cache@v4
+          id: node_modules_cache_id
+          with:
+            path: ~/.pnpm-store
+            key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
             restore-keys: |
-              ${{ runner.os }}-yarn-
-
-        - name: Install Node modules
-          run: yarn install --frozen-lockfile
-        
-        - name: Setup License Manager
-          run: npm install @cybozu/license-manager --no-save
+              ${{ runner.os }}-pnpm-
+        - name: Install Dependencies
+          run: pnpm install --frozen-lockfile
         - name: Check licenses
-          run: npx license-manager analyze -c license_manager/license-manager-dev.config.js
+          run: pnpm dlx @cybozu/license-manager analyze -c license_manager/license-manager-dev.config.js
