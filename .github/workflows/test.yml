@@ -33,6 +33,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+      - name: Install Chrome for Puppeteer
+        run: |
+          pnpm exec puppeteer browsers install chrome
       - name: run test
         run: |
           pnpm install --frozen-lockfile
