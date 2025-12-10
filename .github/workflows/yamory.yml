@@ -8,16 +8,29 @@ jobs:
   check_Vulnerability:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Check out repository
+      uses: actions/checkout@v4
+    - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.3
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'yarn'
+        cache: 'pnpm'
+    - name: Cache Dependencies
+        uses: actions/cache@v4
+        id: node_modules_cache_id
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
     - name: run Yamory
       run: |
-        yarn install --frozen-lockfile
-        bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/yarn)"
+        pnpm install --frozen-lockfile
+        bash -c "$(curl -sSf -L https://localscanner.yamory.io/script/pnpm)"
       env:
         PROJECT_GROUP_KEY: ${{ secrets.PROJECT_GROUP_KEY }}
         YAMORY_API_KEY: ${{ secrets.YAMORY_API_KEY }}

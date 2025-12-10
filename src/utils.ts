@@ -11,7 +11,16 @@ export type BasicAuth = {
 
 const launchBrowser = async (proxy: string | undefined): Promise<Browser> => {
   const args = proxy ? [`--proxy-server=${proxy}`] : [];
-  return puppeteer.launch({ args, headless: true });
+  const ciArgs = [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+  ];
+  return puppeteer.launch({
+    args: [...args, ...ciArgs],
+    headless: true,
+  });
 };
 
 const checkSubmitStatus = async (page: Page) => {
