@@ -6,13 +6,13 @@ Note: In environments where only SAML authentication is enabled, only Users & Sy
 ## Install
 
 ```
-$ npm install -D @garoon/plugin-uploader
+$ pnpm install -D @garoon/plugin-uploader
 ```
 
 or
 
 ```
-$ npm install -g @garoon/plugin-uploader
+$ pnpm install -g @garoon/plugin-uploader
 ```
 
 ## Usage
