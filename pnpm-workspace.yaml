@@ -1,4 +1,4 @@
 allowBuilds:
-  puppeteer: false
+  puppeteer: true
   unrs-resolver: false
 minimumReleaseAge: 1440
