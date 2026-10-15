@@ -1,11 +1,9 @@
 name: License
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-
+    paths-ignore:
+      - '**.md'
 jobs:
   check_dependency_license:
     name: Check Dependency License
