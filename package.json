@@ -1,6 +1,6 @@
 {
   "name": "@garoon/plugin-uploader",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "dist/main.js",
   "description": "plugin uploader for Garoon.",
   "packageManager": "pnpm@12.11.2",
