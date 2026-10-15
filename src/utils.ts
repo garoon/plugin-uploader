@@ -31,7 +31,7 @@ const checkSubmitStatus = async (page: Page) => {
     console.log(chalk.green("Success submitting file!"));
   } catch (e) {
     console.error(e);
-    throw new Error("Can not submit zip file!");
+    throw new Error("Can not submit zip file!", { cause: e });
   }
 };
 
@@ -67,7 +67,7 @@ const login = async (
     return page;
   } catch (e) {
     console.error(e);
-    throw new Error("Can not Login!");
+    throw new Error("Can not Login!", { cause: e });
   }
 };
 
@@ -87,7 +87,7 @@ const update = async (
     });
   } catch (e) {
     console.error(e);
-    throw new Error("Can not view plugin detail page!");
+    throw new Error("Can not view plugin detail page!", { cause: e });
   }
 
   await page.click(".js_plugin_update");
@@ -104,7 +104,7 @@ const update = async (
     await file.uploadFile(pluginPath);
   } catch (e) {
     console.error(e);
-    throw new Error("Can not upload zip file!!");
+    throw new Error("Can not upload zip file!!", { cause: e });
   }
 
   console.log("End uploading file.");
@@ -141,7 +141,7 @@ const add = async (
     });
   } catch (e) {
     console.error(e);
-    throw new Error("Can not view plugin setting page!");
+    throw new Error("Can not view plugin setting page!", { cause: e });
   }
 
   await page.click("#main_menu_part > .menu_item > .button_main_grn");
@@ -158,7 +158,7 @@ const add = async (
     await file.uploadFile(pluginPath);
   } catch (e) {
     console.error(e);
-    throw new Error("Can not upload zip file!!");
+    throw new Error("Can not upload zip file!!", { cause: e });
   }
 
   console.log("End uploading file.");

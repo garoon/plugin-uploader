@@ -11,7 +11,7 @@ const OSS_LICENSE = [
 
 const config = {
   analyze: {
-    query: ":root > .prod", // license-manager uses npm query to search packages.
+    query: ":root .prod", // license-manager uses npm query to search packages.
     allowLicenses: OSS_LICENSE, // If any package is found for which this option is not specified, analyze command will output errors.
     allowPackages: [
       'argparse', // https://bozuman.cybozu.com/k/36070/show#record=349
