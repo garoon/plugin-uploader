@@ -1,22 +1,20 @@
 name: License
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-
+    paths-ignore:
+      - '**.md'
 jobs:
   check_dependency_license:
     name: Check Dependency License
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
       - name: Install node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: "package.json"
           cache: 'pnpm'
@@ -30,11 +28,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Check out repository
-          uses: actions/checkout@v6
+          uses: actions/checkout@v7
         - name: Install pnpm
-          uses: pnpm/action-setup@v5
+          uses: pnpm/action-setup@v6
         - name: Install node
-          uses: actions/setup-node@v6
+          uses: actions/setup-node@v7
           with:
             node-version-file: "package.json"
             cache: 'pnpm'

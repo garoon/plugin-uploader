@@ -3,7 +3,7 @@
   "version": "2.0.5",
   "main": "dist/main.js",
   "description": "plugin uploader for Garoon.",
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@12.11.2",
   "engines": {
     "node": ">=24"
   },
@@ -12,7 +12,8 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts ./src",
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "prepare": "node scripts/check-puppeteer.mjs"
   },
   "keywords": [
     "Garoon"
@@ -29,16 +30,16 @@
   "bugs": "https://github.com/garoon/plugin-uploader/issues",
   "license": "MIT",
   "dependencies": {
-    "chalk": "5.6.2",
-    "puppeteer": "^25.2.0",
-    "yargs": "^18.0.0"
+    "chalk": "6.0.1",
+    "puppeteer": "^25.13.0",
+    "yargs": "^18.2.0"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "^25.0.1",
-    "@types/node": "^24.13.2",
+    "@cybozu/eslint-config": "^26.0.1",
+    "@types/node": "^24.19.2",
     "@types/yargs": "^17.0.35",
-    "eslint": "^9.39.2",
-    "prettier": "^3.8.4",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.10",
     "typescript": "^6.0.3"
   },
   "files": [

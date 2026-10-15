@@ -29,11 +29,13 @@ const OSS_LICENSE = [
   "OFL-1.1", // https://bozuman.cybozu.com/k/8979/show#record=26
   "Unlicense", // https://bozuman.cybozu.com/k/8979/show#record=27
   "CC0-1.0", // https://bozuman.cybozu.com/k/8979/show#record=28
+  "CC-BY-4.0", // https://bozuman.cybozu.com/k/8979/show#record=29
+  "BlueOak-1.0.0", // https://bozuman.cybozu.com/k/8979/show#record=48
 ];
 
 const config = {
   analyze: {
-    query: ":root > .dev", // license-manager uses npm query to search packages.
+    query: ":root *", // license-manager uses npm query to search packages.
     allowLicenses: OSS_LICENSE, // If any package is found for which this option is not specified, analyze command will output errors.
     allowPackages: [
       'argparse', // https://bozuman.cybozu.com/k/36070/show#record=349

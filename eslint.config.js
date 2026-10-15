@@ -1,5 +1,5 @@
-const typescript = require("@cybozu/eslint-config/flat/presets/typescript");
-const typescriptPrettier = require("@cybozu/eslint-config/flat/presets/typescript-prettier");
+const typescript = require("@cybozu/eslint-config/presets/typescript").default;
+const typescriptPrettier = require("@cybozu/eslint-config/presets/typescript-prettier").default;
 
 /**
  * @type { import("eslint").Linter.Config[] }
