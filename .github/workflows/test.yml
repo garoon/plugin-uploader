@@ -1,4 +1,4 @@
-name: execute garoon-plugin-uploader
+name: build check
 
 on:
   pull_request:
@@ -22,12 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install --frozen-lockfile
-      - name: Install Chrome for Puppeteer
-        run: |
-          pnpm exec puppeteer browsers install chrome
       - name: run test
         run: |
           pnpm run lint
           pnpm run build
-          node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip
-          node ./bin/cli.js --base-url ${{ secrets.GAROON_DOMAIN }} --username ${{ secrets.GAROON_USERNAME }} --password ${{ secrets.GAROON_PASSWORD }} --plugin-path ./utils/plugin.zip --plugin-id ${{ secrets.GAROON_PLUGIN_ID }}
