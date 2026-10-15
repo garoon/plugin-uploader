@@ -1,4 +1,4 @@
-name: execute garoon-plugin-uploader
+name: build check
 
 on:
   pull_request:
@@ -22,9 +22,6 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install --frozen-lockfile
-      - name: Install Chrome for Puppeteer
-        run: |
-          pnpm exec puppeteer browsers install chrome
       - name: run test
         run: |
           pnpm run lint
