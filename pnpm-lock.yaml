@@ -178,7 +178,7 @@ importers:
     devDependencies:
       '@cybozu/eslint-config':
         specifier: ^26.0.1
-        version: 26.0.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.9.10)(typescript@6.0.3)
+        version: 26.1.0(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.9.10)(typescript@6.0.3)
       '@types/node':
         specifier: ^24.19.2
         version: 24.19.2
@@ -270,8 +270,8 @@ packages:
   '@cacheable/utils@2.5.0':
     resolution: {integrity: sha512-buipgOVDkkPXNR5+xBpDw7Zk2n1EvU7qBJCNUcL7rhQ//kfpOXPAvQ511Os0vpLYJ1pZnvudNytkQt2hst3wqA==}
 
-  '@cybozu/eslint-config@26.0.1':
-    resolution: {integrity: sha512-0fCpLGQYmOCHiVNZzP1+tF2xBP/O/HhxQdjRKTIXYK+V/eaPnM3NVCaDYyPOZkeEDaUZGWktCs39SdWrfGE1gQ==}
+  '@cybozu/eslint-config@26.1.0':
+    resolution: {integrity: sha512-S62AeGVM+w5UL7meHypaz5f4v9Yo0cfwTtGRnNhmVWjcLrbHnMHsYJuZQwduj0a7d9wAxFtPQq9CjRlT7rpGvw==}
     engines: {node: '>=22'}
     peerDependencies:
       eslint: ^10.0.0
@@ -1370,7 +1370,7 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
-  '@cybozu/eslint-config@26.0.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.9.10)(typescript@6.0.3)':
+  '@cybozu/eslint-config@26.1.0(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.9.10)(typescript@6.0.3)':
     dependencies:
       '@eslint/css': 1.4.0
       '@eslint/js': 10.0.1(eslint@10.12.0)
