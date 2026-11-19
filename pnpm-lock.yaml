@@ -178,7 +178,7 @@ importers:
     devDependencies:
       '@cybozu/eslint-config':
         specifier: ^26.0.1
-        version: 26.0.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.9.10)(typescript@6.0.3)
+        version: 26.0.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.10.1)(typescript@6.0.3)
       '@types/node':
         specifier: ^24.19.2
         version: 24.19.2
@@ -190,7 +190,7 @@ importers:
         version: 10.12.0
       prettier:
         specifier: ^3.9.10
-        version: 3.9.10
+        version: 3.10.1
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1083,8 +1083,8 @@ packages:
     resolution: {integrity: sha512-SxToR7P8Y2lWmv/kTzVLC1t/GDI2WGjMwNhLLE9qtH8Q13C+aEmuRlzDst4Up4s0Wc8sF2M+J57iB3cMLqftfg==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.9.10:
-    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
+  prettier@3.10.1:
+    resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1370,7 +1370,7 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
-  '@cybozu/eslint-config@26.0.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.9.10)(typescript@6.0.3)':
+  '@cybozu/eslint-config@26.0.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)(prettier@3.10.1)(typescript@6.0.3)':
     dependencies:
       '@eslint/css': 1.4.0
       '@eslint/js': 10.0.1(eslint@10.12.0)
@@ -1382,7 +1382,7 @@ snapshots:
       eslint-plugin-import-x: 4.17.1(@typescript-eslint/utils@8.71.2(eslint@10.12.0)(typescript@6.0.3))(eslint@10.12.0)
       eslint-plugin-jsx-a11y-x: 0.2.0(eslint@10.12.0)
       eslint-plugin-n: 18.4.1(eslint@10.12.0)(typescript@6.0.3)
-      eslint-plugin-prettier: 5.5.7(eslint-config-prettier@10.1.8(eslint@10.12.0))(eslint@10.12.0)(prettier@3.9.10)
+      eslint-plugin-prettier: 5.5.7(eslint-config-prettier@10.1.8(eslint@10.12.0))(eslint@10.12.0)(prettier@3.10.1)
       eslint-plugin-react-hooks: 7.1.1(eslint@10.12.0)
       globals: 17.13.0
       typescript: 6.0.3
@@ -1871,10 +1871,10 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
 
-  eslint-plugin-prettier@5.5.7(eslint-config-prettier@10.1.8(eslint@10.12.0))(eslint@10.12.0)(prettier@3.9.10):
+  eslint-plugin-prettier@5.5.7(eslint-config-prettier@10.1.8(eslint@10.12.0))(eslint@10.12.0)(prettier@3.10.1):
     dependencies:
       eslint: 10.12.0
-      prettier: 3.9.10
+      prettier: 3.10.1
       prettier-linter-helpers: 1.0.1
       synckit: 0.12.3
     optionalDependencies:
@@ -2132,7 +2132,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.9.10: {}
+  prettier@3.10.1: {}
 
   punycode@2.3.1: {}
 
